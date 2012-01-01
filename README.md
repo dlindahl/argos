@@ -1,6 +1,12 @@
-# Argos
+# Argos [![Build Status](https://secure.travis-ci.org/dlindahl/argos.png)](http://travis-ci.org/dlindahl/argos)
 
 This is going to eventually be an app that watches a directory structure and auto tags and renames MP3 files.
+
+## Requirements
+
+For OS X:
+
+    brew install echoprint-codegen
 
 ## Installation
 
