@@ -15,5 +15,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Argos::VERSION
 
-  gem.add_dependency 'earworm', '~> 0.0.2'
+  gem.add_dependency 'user-choices',              '~> 1.1.6'
+
+  gem.add_development_dependency 'awesome_print', '~> 1.0.2'
+  gem.add_development_dependency 'rspec',         '~> 2.7.0'
+  gem.add_development_dependency 'simplecov',     '~> 0.5.4'
 end

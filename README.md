@@ -30,9 +30,8 @@ TODO: Write usage instructions here
 
 ## TODO
 
-* Actually write the damn thing.
-* Make a binary
 * Add watchr
+* Highline for disambiguity?
 
 #### Why Argos?
 
