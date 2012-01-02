@@ -9,6 +9,7 @@ module Argos
     def add_sources( builder )
       builder.add_source  CommandLineSource,
                           :usage,
+                            "\n",
                             "Usage: ruby #{$0} SOURCES [options]",
                             "Tags and Renames an MP3, mulitple MP3s, or a directory structure of MP3s based upon your preferences.",
                             "\n",
@@ -17,7 +18,10 @@ module Argos
                             "  * A simple filename",
                             "  * A space separated list of filenames",
                             "  * A single directory (globbing is supported)",
-                            "  * A space seperated list of directories"
+                            "  * A space seperated list of directories",
+                            "\n",
+                            "If you are on a UNIX operating system, it is suggested that you enclose your SOURCE arguments in double-quotes.",
+                            "This allows EchoNest to analyze the files in parallel."
     end
 
     def add_choices( builder )
@@ -35,6 +39,13 @@ module Argos
                                   "The duration of audio in seconds to use in identification. EchoNest needs at least 20 seconds. Larger values result in longer analysis times. Defaults to 30"
       end
 
+      builder.add_choice(:formatter, :type => :string) do |command_line|
+        command_line.uses_option "-f",
+                                  "--formatter FORMATTER",
+                                  "TODO"
+      end
+
+
       builder.add_choice(:tag, :type => :boolean, :default => true) do |command_line|
         command_line.uses_switch  "-t",
                                   "--tag",
@@ -50,10 +61,10 @@ module Argos
     end
 
     def postprocess_user_choices
-      @user_choices[:sources] << Dir.pwd if @user_choices[:sources].empty?
-      @user_choices[:sources].map! { |source| File.expand_path(source) }
+      @user_choices[:sources] = Dir['**/*.mp3'] if @user_choices[:sources].empty?
     end
 
+    # Delegate Hash methods to @user_choices
     def method_missing( method_id, *args, &block )
       if @user_choices.respond_to?(method_id)
         @user_choices.send( method_id, *args, &block )

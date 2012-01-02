@@ -8,7 +8,19 @@ module Argos
     def report( sources )
       start
       begin
-        yield self
+        sources.each do |source|
+          source = yield source if block_given?
+
+          analysis = analyze( source )
+          notify :source_analyzed, source, analysis
+
+          analysis.each do |file_data|
+            notify :identification_started, file_data
+            id = identify file_data
+            notify :identification_finished, file_data
+          end
+
+        end
       ensure
         finish
       end
@@ -16,6 +28,14 @@ module Argos
 
     def start
       @start = Time.now
+    end
+
+    def analyze( source )
+      Argos.analyze source
+    end
+
+    def identify( file_data )
+      Argos.identify file_data
     end
 
     def finish
