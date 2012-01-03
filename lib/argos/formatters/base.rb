@@ -11,6 +11,12 @@ module Argos
       def identification_started( file_data )
       end
 
+      def identification_succeeded( file_data, song_id )
+      end
+
+      def identification_failed( file_data )
+      end
+
       def identification_finished( file_data )
       end
 

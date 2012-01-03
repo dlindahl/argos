@@ -12,6 +12,14 @@ module Argos
         ap "ID STARTED!"
       end
 
+      def identification_succeeded( file_data, song_id )
+        ap "SUCCESS!!!!!!"
+      end
+
+      def identification_failed( file_data )
+        ap "Failed :("
+      end
+
       def identification_finished( file_data )
         ap "ID FINISHED!"
       end

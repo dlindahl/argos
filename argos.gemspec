@@ -16,6 +16,8 @@ Gem::Specification.new do |gem|
   gem.version       = Argos::VERSION
 
   gem.add_dependency 'user-choices',              '~> 1.1.6'
+  gem.add_dependency 'nestling',                  '~> 0.1.1'
+  gem.add_dependency 'ruby-mp3info',              '~> 0.6.16'
 
   gem.add_development_dependency 'awesome_print', '~> 1.0.2'
   gem.add_development_dependency 'rspec',         '~> 2.7.0'

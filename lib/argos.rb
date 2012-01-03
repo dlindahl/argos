@@ -33,6 +33,10 @@ module Argos
       identifier.identify source
     end
 
+    def search( song_id )
+      identifier.search song_id
+    end
+
   end
 
 end

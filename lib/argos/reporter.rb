@@ -16,7 +16,15 @@ module Argos
 
           analysis.each do |file_data|
             notify :identification_started, file_data
-            id = identify file_data
+
+            song_id = identify file_data
+            if song_id.empty?
+              notify :identification_failed, file_data
+            else
+              notify :identification_succeeded, file_data, song_id
+              search song_id
+            end
+
             notify :identification_finished, file_data
           end
 
@@ -36,6 +44,10 @@ module Argos
 
     def identify( file_data )
       Argos.identify file_data
+    end
+
+    def search( song_id )
+      Argos.search song_id
     end
 
     def finish
