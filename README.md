@@ -4,13 +4,17 @@ This is going to eventually be an app that watches a directory structure and aut
 
 ## Requirements
 
+[echoprint-codegen](https://github.com/echonest/echoprint-codegen)
+
 For OS X:
 
     brew install echoprint-codegen
 
+Echo Nest Musical Fingerprint (TODO)
+
 ## Installation
 
-First, refer to the docs for [earworm](http://earworm.rubyforge.org/earworm/)
+First, refer to the docs for [earworm](http://earworm.rubyforge.org/earworm/) (DEPRECATE?)
 
 Then install it locally:
 
@@ -19,6 +23,12 @@ Then install it locally:
 ## Usage
 
 TODO: Write usage instructions here
+
+## Configuring
+
+You'll need an EchoNest API Key which you can configure in a `.argos` file
+
+    api_key: YOUR_API_KEY_HERE
 
 ## Contributing
 

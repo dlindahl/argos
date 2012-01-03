@@ -7,6 +7,7 @@ module Argos
     attr_accessor :user_choices
 
     def add_sources( builder )
+      builder.add_source(YamlConfigFileSource, :from_complete_path, ".argos")
       builder.add_source  CommandLineSource,
                           :usage,
                             "\n",
@@ -26,6 +27,12 @@ module Argos
 
     def add_choices( builder )
       builder.add_choice(:sources) { |command_line| command_line.uses_arglist }
+
+      builder.add_choice(:api_key, :type => :string) do |command_line|
+        command_line.uses_option "-a",
+                                  "--api_key ECHONEST_KEY",
+                                  "Your EchoNest API Key"
+      end
 
       builder.add_choice(:start, :type => :integer, :default => 10) do |command_line|
         command_line.uses_option "-s",
