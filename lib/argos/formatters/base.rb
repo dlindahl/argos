@@ -17,6 +17,9 @@ module Argos
       def identification_failed( file_data )
       end
 
+      def retagged( mp3_file, file_data, song_id )
+      end
+
       def identification_finished( file_data )
       end
 

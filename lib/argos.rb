@@ -9,6 +9,7 @@ module Argos
   autoload :Config,     'argos/config'
   autoload :Identifier, 'argos/identifier'
   autoload :Reporter,   'argos/reporter'
+  autoload :Retagger,   'argos/retagger'
   autoload :Runner,     'argos/runner'
 
   class << self
@@ -35,6 +36,14 @@ module Argos
 
     def search( song_id )
       identifier.search song_id
+    end
+
+    def retagger
+      @@retagger ||= Retagger.new
+    end
+
+    def retag( mp3_file, file_data, song_id )
+      retagger.retag mp3_file, file_data, song_id
     end
 
   end

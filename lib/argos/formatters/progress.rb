@@ -16,6 +16,10 @@ module Argos
         ap "SUCCESS!!!!!!"
       end
 
+      def retagged( mp3_file, file_data, song_id )
+        ap "RETAGGED!"
+      end
+
       def identification_failed( file_data )
         ap "Failed :("
       end

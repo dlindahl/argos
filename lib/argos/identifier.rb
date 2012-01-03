@@ -25,17 +25,18 @@ module Argos
     end
 
     def search( song_id )
-      song_id = song_id.first
-
-      ap "song id"
-      ap song_id
-
-      # results = echonest.artist(:id => song_id[:artist_id]).songs( :results => 100, :start => 449)
-      results = echonest.song.profile(
-        :id => song_id[:id],
-        :bucket => [ 'id:7digital-US', 'tracks' ]
-      )
-      ap results
+      puts "NOT YET IMPLEMENTED"
+      # song_id = song_id.first
+      # 
+      # ap "song id"
+      # ap song_id
+      # 
+      # # results = echonest.artist(:id => song_id[:artist_id]).songs( :results => 100, :start => 449)
+      # results = echonest.song.profile(
+      #   :id => song_id[:id],
+      #   :bucket => [ 'id:7digital-US', 'tracks' ]
+      # )
+      # ap results
     end
 
   private
