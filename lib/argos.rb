@@ -8,6 +8,7 @@ module Argos
   autoload :Analyzer,   'argos/analyzer'
   autoload :Config,     'argos/config'
   autoload :Identifier, 'argos/identifier'
+  autoload :Renamer,    'argos/renamer'
   autoload :Reporter,   'argos/reporter'
   autoload :Retagger,   'argos/retagger'
   autoload :Runner,     'argos/runner'
@@ -44,6 +45,10 @@ module Argos
 
     def retag( mp3_file, file_data, song_id )
       retagger.retag mp3_file, file_data, song_id
+    end
+
+    def rename( mp3_file, file_data, song_id )
+      Renamer.new( mp3_file, file_data, song_id ).rename!
     end
 
   end

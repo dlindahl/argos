@@ -61,15 +61,23 @@ module Argos
     end
 
     def retag( mp3_path, file_data, song_id )
+      notify :retagging, mp3_path, file_data, song_id
       Argos.retag mp3_path, file_data, song_id
       notify :retagged, mp3_path, file_data, song_id
     end
 
     def rename( mp3_path, file_data, song_id )
-      # Argos.rename mp3_path, file_data, song_id
-      # notify :renamed, source, file_data, song_id
-    end
+      notify :renaming, mp3_path, file_data, song_id
+      Argos.rename( mp3_path, file_data, song_id ).tap do |results|
+        old_name, new_name = results
 
+        if new_name
+          notify :renamed, old_name, new_name, file_data, song_id
+        else
+          notify :not_renamed, old_name, file_data, song_id
+        end
+      end
+    end
 
     def finish
       stop
