@@ -5,27 +5,51 @@ module Argos
     class Progress < Argos::Formatters::Base
 
       def source_analyzed( source, analysis )
-        ap "SOURCE ANALYZED! #{source}"
+        # TODO: Figure out why flush isn't working...
+        $stdout.write "Analyzing #{source}\n"
+        # $stdout.flush
       end
 
       def identification_started( file_data )
-        ap "ID STARTED!"
+        $stdout.write "    Identification starting... "
       end
 
       def identification_succeeded( file_data, song_id )
-        ap "SUCCESS!!!!!!"
+        $stdout.write "OK.\n"
+        # $stdout.flush
+      end
+
+      def retagging( mp3_file, file_data, song_id )
+        $stdout.write "    Retagging... "
       end
 
       def retagged( mp3_file, file_data, song_id )
-        ap "RETAGGED!"
+        $stdout.write "Done.\n"
+        # $stdout.flush
+      end
+
+      def renaming( mp3_path, file_data, song_id )
+        $stdout.write "    Renaming... "
+      end
+
+      def renamed( old_name, new_name, * )
+        $stdout.write "Done.\n"
+        # $stdout.flush
+      end
+
+      def not_renamed( old_name, file_data, song_id )
+        $stdout.write "Skipped.\n"
+        # $stdout.flush
       end
 
       def identification_failed( file_data )
-        ap "Failed :("
+        $stdout.write "Failed.\n"
+        # $stdout.flush
       end
 
       def identification_finished( file_data )
-        ap "ID FINISHED!"
+        $stdout.write "    Finished.\n"
+        # $stdout.flush
       end
 
     end
